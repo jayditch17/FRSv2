@@ -612,7 +612,16 @@
 
                                                 <div class="form-group <?php echo (!empty($evePlace_err)) ? 'has-error' : ''; ?>">
                                                   <label>Event Place</label>
-                                                  <input type="text" name="evePlace" class="form-control" value="<?php echo $evePlace; ?>">
+                                                  <select name="evePlace" class="form-control" value="<?php echo $evePlace; ?>">
+                                                    <option value="">Please Select</option>
+                                                    <option value="Devesse Plaza">Devesse Plaza</option>
+                                                      <option value="Oval">Oval</option>
+                                                      <option value="Swimming Pool">Swimming Pool</option>
+                                                      <option value="Amphi Theater">Amphi Theater</option>
+                                                      <option value="AVR">AVR</option>
+                                                      <option value="Volleyball Court">Volleyball Court</option>
+                                                      <option value="Basketball Court">Basketball Court</option>
+                                                    </select>
                                                   <span class="help-block"><?php echo $evePlace_err;?></span>
                                                 </div>
 
