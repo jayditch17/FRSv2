@@ -24,6 +24,17 @@
     <link rel="stylesheet" href="../../../../global/global2/css/bootstrap-extend.min.css">
     <link rel="stylesheet" href="../../../assets2/css/site.min.css">
     <link rel="stylesheet" type="text/css" href="../../../../global/css/style.css">
+
+     <link href='../../../fullcalendar-4.3.1/packages/core/main.css' rel='stylesheet' />
+        <link href='../../../fullcalendar-4.3.1/packages/daygrid/main.css' rel='stylesheet' />
+        <link href='../../../fullcalendar-4.3.1/packages/timegrid/main.css' rel='stylesheet' />
+        <link href='../../../fullcalendar-4.3.1/packages/list/main.css' rel='stylesheet' /> 
+
+        <script src='../../../fullcalendar-4.3.1/packages/core/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/interaction/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/daygrid/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/timegrid/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/list/main.js'></script>
     
     <!-- Plugins -->
     <link rel="stylesheet" href="../../../../global/global2/vendor/animsition/animsition.css">
@@ -645,6 +656,26 @@ if (!$mail->send()) {
                     </div>
 
                       <tbody>
+                         <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    plugins: [ 'dayGrid', 'timeGrid', 'list', 'interaction' ],
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    },
+    events: 'v_court_cal.php',
+   });
+
+   calendar.render();
+});
+
+</script>
+            <div id='calendar'></div>
                         <?php
                     // Include config file
                     require_once "config.php";

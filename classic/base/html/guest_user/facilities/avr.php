@@ -24,6 +24,17 @@
     <link rel="stylesheet" href="../../../../global/global2/css/bootstrap-extend.min.css">
     <link rel="stylesheet" href="../../../assets2/css/site.min.css">
     <link rel="stylesheet" type="text/css" href="../../../../global/css/style.css">
+
+     <link href='../../../fullcalendar-4.3.1/packages/core/main.css' rel='stylesheet' />
+        <link href='../../../fullcalendar-4.3.1/packages/daygrid/main.css' rel='stylesheet' />
+        <link href='../../../fullcalendar-4.3.1/packages/timegrid/main.css' rel='stylesheet' />
+        <link href='../../../fullcalendar-4.3.1/packages/list/main.css' rel='stylesheet' /> 
+
+        <script src='../../../fullcalendar-4.3.1/packages/core/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/interaction/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/daygrid/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/timegrid/main.js'></script>
+        <script src='../../../fullcalendar-4.3.1/packages/list/main.js'></script>
     
     <!-- Plugins -->
     <link rel="stylesheet" href="../../../../global/global2/vendor/animsition/animsition.css">
@@ -646,6 +657,26 @@ if (!$mail->send()) {
                       </div>
                     </div>
 
+                       <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    plugins: [ 'dayGrid', 'timeGrid', 'list', 'interaction' ],
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    },
+    events: 'avr_cal.php',
+   });
+
+   calendar.render();
+});
+
+</script>
+            <div id='calendar'></div>
                       <tbody>
                        <?php
                     // Include config file
@@ -712,65 +743,7 @@ if (!$mail->send()) {
                       </div>
                     </div>
               
-                    <table class="table table-bordered table-hover table-striped" cellspacing="0" id="exampleAddRow">
-                    <tbody>
-                        <?php
-                    // Include config file
-                    require_once "config.php";
                     
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM events";
-                    if($result = mysqli_query($link, $sql)){
-                        if(mysqli_num_rows($result) > 0){
-                            echo "<table class='table table-bordered table-striped'>";
-                                echo "<thead>";
-                                    echo "<tr>";
-
-                                       echo "<th>Event Name</th>";
-                                       echo "<th>Date Start</th>";
-                                       echo "<th>Date End</th>";
-                                       echo "<th>Time Start</th>";
-                                       echo "<th>Time End</th>";
-                                       echo "<th>Organization</th>";
-                                       echo "<th>Position</th>";
-                                        echo"<th>No. of Participants</th>";
-                                    echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
-                                while($row = mysqli_fetch_array($result)){
-                                    echo "<tr>";
-
-
-                                        echo "<td>" . $row['actVenue'] . "</td>";
-                                        echo "<td>" . $row['startDate'] . "</td>";
-                                        echo "<td>" . $row['endDate'] . "</td>";
-                                        echo "<td>" . $row['startTime'] . "</td>";
-                                        echo "<td>" . $row['endTime'] . "</td>";
-                                        echo "<td>" . $row['eventOrg'] . "</td>";
-                                        echo "<td>" . $row['posi'] . "</td>";
-                                        echo "<td>" . $row['numPart'] . "</td>";
-
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
-                            echo "</table>";
-                            // Free result set
-                            mysqli_free_result($result);
-                        } else{
-                            echo "<p class='lead'><em>No records were found.</em></p>";
-                        }
-                    } else{
-                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                    }
- 
-                    // Close connection
-                    mysqli_close($link);
-                    ?>
-                       
-
-                      </tbody>
-                      
-                    </table>
                   </div>
                 </div>
                 <!-- End Panel Table Add Row -->
