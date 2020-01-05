@@ -647,9 +647,9 @@ if (!$mail->send()) {
                         <?php
                     // Include config file
                     require_once "config.php";
-                    
+                    $evePlace = 'Oval';
                     // Attempt select query execution
-                    $sql = "SELECT * FROM request_su";
+                    $sql = "SELECT * FROM events WHERE evePlace = '$evePlace'";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                           echo "<h4>Events</h4>";
@@ -659,6 +659,7 @@ if (!$mail->send()) {
 
                                        echo "<th>Event Name</th>";
                                        echo "<th>Date Start</th>";
+                                       echo "<th>Event Place</th>";
                                        echo "<th>Date End</th>";
                                        echo "<th>Time Start</th>";
                                        echo "<th>Time End</th>";
@@ -672,6 +673,7 @@ if (!$mail->send()) {
                                     echo "<tr>";
 
                                         echo "<td>" . $row['eveName'] . "</td>";
+                                        echo "<td>" . $row['evePlace'] . "</td>";
                                         echo "<td>" . $row['startDate'] . "</td>";
                                         echo "<td>" . $row['endDate'] . "</td>";
                                         echo "<td>" . $row['startTime'] . "</td>";

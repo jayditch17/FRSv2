@@ -294,23 +294,16 @@
                 </a>
               </li>
               <li class="site-menu-item has-sub">
-                <a href="javascript:void(0)">
-                        <i class="site-menu-icon icon ion-ios-baseball" aria-hidden="true"></i>
-                        <span class="site-menu-title">Courts</span>
-                                <span class="site-menu-arrow"></span>
-                    </a>
-                <ul class="site-menu-sub">
-                  <li class="site-menu-item">
-                    <a class="animsition-link" href="v_court.html">
-                      <span class="site-menu-title">Volleyball Court</span>
-                    </a>
-                  </li>
-                  <li class="site-menu-item">
-                    <a class="animsition-link" href="b_court.html">
-                      <span class="site-menu-title">Basketball Court</span>
-                    </a>
-                  </li>
-                </ul>
+                <a href="v_court.php">
+                        <i class="site-menu-icon icon pe-ball" aria-hidden="true"></i>
+                        <span class="site-menu-title">Volleyball Court</span>
+                </a>
+              </li>
+              <li class="site-menu-item has-sub">
+                <a href="b_court.php">
+                        <i class="site-menu-icon icon ion-ios-basketball" aria-hidden="true"></i>
+                        <span class="site-menu-title">Basketball Court</span>
+                </a>
               </li>
               <li class="site-menu-category">Reservation</li>
               <li class="site-menu-item has-sub">
@@ -672,9 +665,9 @@ if (!$mail->send()) {
                         <?php
                     // Include config file
                     require_once "config.php";
-                    
+                    $evePlace = 'Devesse Plaza';
                     // Attempt select query execution
-                    $sql = "SELECT * FROM events";
+                    $sql = "SELECT * FROM events WHERE evePlace = '$evePlace'";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                           echo "<h4>Events</h4>";
@@ -683,6 +676,7 @@ if (!$mail->send()) {
                                     echo "<tr>";
 
                                        echo "<th>Event Name</th>";
+                                       echo "<th>Event Place</th>";
                                        echo "<th>Date Start</th>";
                                        echo "<th>Date End</th>";
                                        echo "<th>Time Start</th>";
@@ -697,6 +691,7 @@ if (!$mail->send()) {
                                     echo "<tr>";
 
                                         echo "<td>" . $row['eveName'] . "</td>";
+                                        echo "<td>" . $row['evePlace'] . "</td>";
                                         echo "<td>" . $row['startDate'] . "</td>";
                                         echo "<td>" . $row['endDate'] . "</td>";
                                         echo "<td>" . $row['startTime'] . "</td>";

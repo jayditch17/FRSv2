@@ -11,12 +11,14 @@
             $pos = $row["pos"];
             $adviser = $row["adviser"];
             $eveName = $row["eveName"];
+            $evePlace = $row["evePlace"];
+
             $numPart = $row["numPart"];
             $startDate = $row["startDate"];
             $endDate = $row["endDate"];
             $startTime = $row["startTime"];
             $endTime = $row["endTime"];
-            $query = "INSERT INTO `dean_office` (`eventID`, `firstName`, `lastName`, `mobNum`, `org`, `pos`, `adviser`, `eveName`, `numPart`, `startDate`, `endDate`, `startTime`, `endTime`) VALUES (NULL, '$firstName', '$lastName', '$mobNum', 'org', '$pos', '$adviser', '$eveName', '$numPart', '$startDate', '$endDate', '$startTime', '$endTime');";
+            $query = "INSERT INTO `events` (`eventID`, `firstName`, `lastName`, `mobNum`, `org`, `pos`, `adviser`, `eveName`, `evePlace`, `numPart`, `startDate`, `endDate`, `startTime`, `endTime`) VALUES (NULL, '$firstName', '$lastName', '$mobNum', 'org', '$pos', '$adviser', '$eveName', '$evePlace', '$numPart', '$startDate', '$endDate', '$startTime', '$endTime');";
         }
         $query .= "DELETE FROM `request_su` WHERE `request_su`.`eventID` = '$eventID';";
         if(performQuery($query)){

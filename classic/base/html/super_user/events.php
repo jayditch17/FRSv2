@@ -424,7 +424,7 @@
 
 
                             // Prepare an insert statement
-                            $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, equipments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                             // $check = mysqli_query($link, "SELECT * from events WHERE eventPlace = '$evePlace' and startDate = '$startDate' and endDate = '$endDate' and startTime = $startTime' and endTime = '$endTime");
                             // $checkrows = mysqli_num_rows($check);
 
@@ -440,7 +440,7 @@
                              //not exists(select * from events e where e.startTime = @startTime)
                             if ($stmt = mysqli_prepare($link, $sql)){
                                 // Bind variables to the prepared statement as parameters
-                                mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_equip);
+                                mysqli_stmt_bind_param($stmt, "sssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime);
                                 
                                 // Set parameters
                                 $param_fname = $firstName;
@@ -546,7 +546,7 @@
                             // Free result set
                             mysqli_free_result($result);
                         } else{
-                            echo "<p class='lead'><em>No Reservation were found.</em></p>";
+                            echo "<p class='lead'><em>No Events were found.</em></p>";
                         }
                     } else{
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

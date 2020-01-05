@@ -320,6 +320,7 @@
                                        echo "<th>Organization</th>";
                                        echo "<th>Adviser</th>";
                                        echo "<th>Event Name</th>";
+                                       echo "<th>Event Place</th>";
                                        echo "<th>Number of Participants</th>";
                                        echo "<th>Start Date</th>";
                                        echo "<th>End Date</th>";
@@ -341,6 +342,7 @@
                                         echo "<td>" . $row['org'] . "</td>";
                                         echo "<td>" . $row['adviser'] . "</td>";
                                         echo "<td>" . $row['eveName'] . "</td>";
+                                        echo "<td>" . $row['evePlace'] . "</td>";
                                         echo "<td>" . $row['numPart'] . "</td>";
                                         echo "<td>" . $row['startDate'] . "</td>";
                                         echo "<td>" . $row['endDate'] . "</td>";
