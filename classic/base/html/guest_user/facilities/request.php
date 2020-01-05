@@ -1,4 +1,10 @@
-
+<?php  
+    session_start();
+    include("functions.php");
+    if($_SESSION['login'] !==true){
+      header('location:../../../../../index.php');
+    }
+?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
   <head>
@@ -122,10 +128,20 @@
                   <i></i>
                 </span>
               </a>
-              <div class="dropdown-menu" role="menu">
-               <a class="dropdown-item" href="../../../../../index.php" role="menuitem"><i class="icon wb-power" aria-hidden="true" name="logout"></i> Logout</a>
-              </div>
-            </li>
+             <div class="dropdown-menu" role="menu">
+                
+          <form method="post" class="dropdown-item">
+            <button name="logout" class='btn btn-danger my-2'>Logout</button>
+          </form>
+          <?php
+          if(isset($_POST['logout'])) {
+            session_destroy();
+            echo '<script type="text/javascript">';
+            echo 'alert("You have been succesfully logout");';
+            echo 'window.location.href = "../../../../../index.php";';
+            echo '</script>';
+          }
+          ?>
             <li class="nav-item dropdown">
               <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
                 aria-expanded="false" data-animation="scale-up" role="button">

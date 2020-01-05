@@ -1,5 +1,9 @@
-<?php
-  include('DBConnector.php');
+<?php  
+    session_start();
+    include("functions.php");
+    if($_SESSION['login'] !==true){
+      header('location:../../../../../../index.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +135,8 @@
                 </span>
               </a>
               <div class="dropdown-menu" role="menu">
-              <form method="post" class="dropdown-item">
+                
+          <form method="post" class="dropdown-item">
             <button name="logout" class='btn btn-danger my-2'>Logout</button>
           </form>
           <?php
@@ -139,7 +144,7 @@
             session_destroy();
             echo '<script type="text/javascript">';
             echo 'alert("You have been succesfully logout");';
-            echo 'window.location.href = "../../../../index.php";';
+            echo 'window.location.href = "../../../../../index.php";';
             echo '</script>';
           }
           ?>

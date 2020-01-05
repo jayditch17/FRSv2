@@ -2,9 +2,10 @@
     session_start();
     include("functions.php");
     if($_SESSION['login'] !==true){
-      header('location:../../../../../../index.php');
+      header('location:../../../../../index.php');
     }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
   <head>
     <meta charset="utf-8">
