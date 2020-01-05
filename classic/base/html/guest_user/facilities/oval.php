@@ -473,11 +473,11 @@ if (!$mail->send()) {
                         // Check input errors before inserting in database
                         if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err) && empty($equip_err)){
                             // Prepare an insert statement
-                            $sql = "INSERT INTO request_su (firstName, lastName, mobNum, org, pos, adviser, eveName, numPart, startDate, endDate, startTime, endTime, equipments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO request_su (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, equipments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                              
                             if($stmt = mysqli_prepare($link, $sql)){
                                 // Bind variables to the prepared statement as parameters
-                                mysqli_stmt_bind_param($stmt, "sssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_equip);
+                                mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePalce, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_equip);
                                 
                                 // Set parameters
                                 $param_fname = $firstName;
@@ -487,6 +487,7 @@ if (!$mail->send()) {
                                 $param_pos = $pos;
                                 $param_adviser = $adviser;
                                 $param_eveName = $eveName;
+                                $param_evePlace = 'Oval';
                                 $param_numPart = $numPart;
                                 $param_startDate = $startDate;
                                 $param_endDate = $endDate;
