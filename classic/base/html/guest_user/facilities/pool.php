@@ -565,7 +565,7 @@ if (!$mail->send()) {
                                               </div>
                                                 <div class="form-group <?php echo (!empty($mobNum_err)) ? 'has-error' : ''; ?>">
                                                   <label>Mobile Number</label>
-                                                  <input type="text" name="mobNum" class="form-control" value="<?php echo $mobNum; ?>">
+                                                  <input type="text" name="mobNum" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" maxlength = "11" class="form-control" value="<?php echo $mobNum; ?>">
                                                   <span class="help-block"><?php echo $mobNum_err;?></span>
                                                 </div>
 
@@ -595,7 +595,7 @@ if (!$mail->send()) {
 
                                                 <div class="form-group <?php echo (!empty($numPart_err)) ? 'has-error' : ''; ?>">
                                                   <label>Number of Participants</label>
-                                                  <input type="text" name="numPart" class="form-control" value="<?php echo $numPart; ?>">
+                                                  <input type="text" type="number" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" maxlength = "4" name="numPart" class="form-control" value="<?php echo $numPart; ?>">
                                                   <span class="help-block"><?php echo $numPart_err;?></span>
                                                 </div>
 
