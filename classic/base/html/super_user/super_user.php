@@ -297,8 +297,8 @@
     <div class="page">
       <div class="page-content container-fluid">
         <div class="row" data-plugin="matchHeight" data-by-row="true">
-          <div class="col-xxl-5 col-lg-5">
-            <div class="card-header">
+          <div class="col-xxl-5 col-lg-5 ">
+            <div class="card-header bg-blue-600 white">
               <?php
                 require_once "config.php";
                 $sql = "SELECT * FROM users";
@@ -313,7 +313,7 @@
           </div>
 
           <div class="col-xxl-5 col-lg-5">
-            <div class="card-header">
+            <div class="card-header bg-white-600">
               <?php
                 require_once "config.php";
                 $sql = "SELECT * FROM facilities";
@@ -326,7 +326,7 @@
            
           </div>
 
-          <div class="col-xxl-5 col-lg-5">
+          <div class="col-xxl-5 col-lg-5 ">
             <div class="card-header">
               <?php
                 require_once "config.php";
@@ -341,7 +341,7 @@
           </div>
 
           <div class="col-xxl-5 col-lg-5">
-            <div class="card-header">
+            <div class="card-header bg-blue-600 white">
               <?php
                 require_once "config.php";
                 $sql = "SELECT * FROM events";
