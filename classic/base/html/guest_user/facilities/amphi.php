@@ -313,7 +313,62 @@
     
       </div>
     </div>
-<?php
+
+    <!-- Page -->
+    <div class="page">
+      <div class="page-content container-fluid">
+        <div data-plugin="matchHeight" data-by-row="true">
+         <div class="page-header clearfix">
+                        <button class="btn btn-success pull-right" data-toggle="modal" data-target="#basicModal">Add Reservation</button>
+                    </div>
+
+                    <?php
+
+if (isset($_POST['post_act'])) {
+    # code...
+  require 'phpmailer/PHPMailerAutoLoad.php';
+
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+    //Server settings
+    $mail->SMTPDebug = 4;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'frsitproject@gmail.com';                     // SMTP username
+    $mail->Password   = 'frs@itproject123';                               // SMTP password
+    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail->Port       = 587;                                    // TCP port to connect to
+
+    //Recipients
+    $mail->setFrom('frsitproject@gmail.com', 'FRS');
+    $mail->addAddress('frsitproject@gmail.com', 'Joe User');     // Add a recipient
+    //$mail->addAddress('ellen@example.com');               // Name is optional
+    $mail->addReplyTo('frsitproject@gmail.com', 'Information');
+
+    // Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Reservation/Request';
+    $mail->Body    = 'New Reservation Request';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+if (!$mail->send()) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}else{
+    echo '<script type="text/javascript">'; 
+                                    echo 'alert("Reservation is now Pending. Thank You!");'; 
+                                    echo 'window.location.href = "amphi.php";';
+                                    echo '</script>';
+}
+}
+?>
+
+                    <?php
                     // Include config file
                     require_once "config.php";
                      
@@ -475,59 +530,8 @@
                     ?>
 
 
-    <!-- Page -->
-    <div class="page">
-      <div class="page-content container-fluid">
-        <div data-plugin="matchHeight" data-by-row="true">
-         <div class="page-header clearfix">
-                        <button class="btn btn-success pull-right" data-toggle="modal" data-target="#basicModal">Add Reservation</button>
-                    </div>
 
-                     <?php
-
-if (isset($_POST['post_act'])) {
-    # code...
-  require 'phpmailer/PHPMailerAutoLoad.php';
-
-// Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
-
-    //Server settings
-    $mail->SMTPDebug = 4;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'webteklec@gmail.com';                     // SMTP username
-    $mail->Password   = 'WEBtek@123';                               // SMTP password
-    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                    // TCP port to connect to
-
-    //Recipients
-    $mail->setFrom('webteklec@gmail.com', 'Mailer');
-    $mail->addAddress('webteklec@gmail.com', 'Joe User');     // Add a recipient
-    //$mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('webteklec@gmail.com', 'Information');
-
-    // Attachments
-    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Activity';
-    $mail->Body    = 'New Activity Posted';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-if (!$mail->send()) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}else{
-    echo '<script type="text/javascript">'; 
-                                    echo 'alert("Activity posted!. Thank You!");'; 
-                                    echo 'window.location.href = "activities.php";';
-                                    echo '</script>';
-}
-}
-?>
+                     
 
                     <!-- add modal  -->
                     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -620,8 +624,8 @@ if (!$mail->send()) {
                                                 </div>
                                                 <div class="modal-footer">
                                                   <form role="form" method="post" enctype="multipart/form-data">
-                                               <input type="submit" class="btn btn-primary" name="post_act"  value="Submit">
-                                              </form>
+                              <input type="submit" class="btn btn-primary" name="post_act" value="Post Activity">
+                            </form>
                                                 <a href="plaza.php" class="btn btn-default">Cancel</a>
                                                 </div>
                                                 </form>
