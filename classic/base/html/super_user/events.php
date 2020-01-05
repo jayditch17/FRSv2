@@ -305,9 +305,9 @@
                     require_once "config.php";
                      
                     // Define variables and initialize with empty values
-                    $firstName = $lastName = $mobNum = $org = $pos = $adviser = $eveName = $numPart = $startDate = $endDate = $startTime =$endTime = $equip = "";
+                    $firstName = $lastName = $mobNum = $org = $pos = $adviser = $eveName = $evePlace = $numPart = $startDate = $endDate = $startTime =$endTime = $equip = "";
                     //$name_err = $address_err = $salary_err = "";
-                    $firstName_err = $lastName_err = $mobNum_err = $org_err = $pos_err = $adviser_err = $eveName_err = $numPart_err = $startDate_err = $endDate_err = $startTime_err = $endTime_err = $equip_err = "";
+                    $firstName_err = $lastName_err = $mobNum_err = $org_err = $pos_err = $adviser_err = $eveName_err = $evePlace_err = $numPart_err = $startDate_err = $endDate_err = $startTime_err = $endTime_err = $equip_err = "";
                      
                     // Processing form data when form is submitted
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -366,6 +366,13 @@
                             $eveName = $input_eveName;
                         }
 
+                        $input_evePlace = trim($_POST["evePlace"]);
+                        if(empty($input_evePlace)){
+                            $evePlace_err = "Please enter a name.";
+                        } else{
+                            $evePlace = $input_evePlace;
+                        }
+
                         $input_numPart = trim($_POST["numPart"]);
                         if(empty($input_numPart)){
                             $numPart_err = "Please enter a name.";
@@ -414,12 +421,26 @@
                         // }
                         // Check input errors before inserting in database
                         if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err) && empty($equip_err)){
+
+
                             // Prepare an insert statement
-                            $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, numPart, startDate, endDate, startTime, endTime, equipments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, equipments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            // $check = mysqli_query($link, "SELECT * from events WHERE eventPlace = '$evePlace' and startDate = '$startDate' and endDate = '$endDate' and startTime = $startTime' and endTime = '$endTime");
+                            // $checkrows = mysqli_num_rows($check);
+
+                            // if ($checkrows > 0) {
+                            //   # code...
+                            //    echo '<script type="text/javascript">'; 
+                            //         echo 'alert("Event already Exist. Thank You!");'; 
+                            //         echo 'window.location.href = "events.php";';
+                            //         echo '</script>';
+                            //         exit();
+
+                            // }
                              //not exists(select * from events e where e.startTime = @startTime)
                             if ($stmt = mysqli_prepare($link, $sql)){
                                 // Bind variables to the prepared statement as parameters
-                                mysqli_stmt_bind_param($stmt, "sssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_equip);
+                                mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_equip);
                                 
                                 // Set parameters
                                 $param_fname = $firstName;
@@ -429,6 +450,7 @@
                                 $param_pos = $pos;
                                 $param_adviser = $adviser;
                                 $param_eveName = $eveName;
+                                $param_evePlace = $evePlace;
                                 $param_numPart = $numPart;
                                 $param_startDate = $startDate;
                                 $param_endDate = $endDate;
@@ -486,6 +508,7 @@
                                        echo "<th>Organization</th>";
                                        echo "<th>Adviser</th>";
                                        echo "<th>Event Name</th>";
+                                       echo "<th>Event Place</th>";
                                        echo "<th>Number of Participants</th>";
                                        echo "<th>Start Date</th>";
                                        echo "<th>End Date</th>";
@@ -505,6 +528,7 @@
                                         echo "<td>" . $row['org'] . "</td>";
                                         echo "<td>" . $row['adviser'] . "</td>";
                                         echo "<td>" . $row['eveName'] . "</td>";
+                                        echo "<td>" . $row['evePlace'] . "</td>";
                                         echo "<td>" . $row['numPart'] . "</td>";
                                         echo "<td>" . $row['startDate'] . "</td>";
                                         echo "<td>" . $row['endDate'] . "</td>";
@@ -584,6 +608,12 @@
                                                   <label>Event Name</label>
                                                   <input type="text" name="eveName" class="form-control" value="<?php echo $eveName; ?>">
                                                   <span class="help-block"><?php echo $eveName_err;?></span>
+                                                </div>
+
+                                                <div class="form-group <?php echo (!empty($evePlace_err)) ? 'has-error' : ''; ?>">
+                                                  <label>Event Place</label>
+                                                  <input type="text" name="evePlace" class="form-control" value="<?php echo $evePlace; ?>">
+                                                  <span class="help-block"><?php echo $evePlace_err;?></span>
                                                 </div>
 
                                                 <div class="form-group <?php echo (!empty($numPart_err)) ? 'has-error' : ''; ?>">
