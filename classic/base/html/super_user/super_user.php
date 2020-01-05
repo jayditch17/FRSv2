@@ -347,7 +347,7 @@
                 $sql = "SELECT * FROM events";
                 $query = mysqli_query($link, $sql);
                 
-                echo "<h3 class = 'text-center'>Events/s</h3>";
+                echo "<h3 class = 'text-center'>Event/s</h3>";
                 echo "<h3 class = 'text-center'>".mysqli_num_rows($query)."</h3>";
                 ?>
               </div>
