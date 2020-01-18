@@ -160,7 +160,7 @@
               </li>
               <li class="site-menu-item has-sub active">
                 <a href="../calendar.php">
-                        <i class="site-menu-icon icon wb-home" aria-hidden="true"></i>
+                        <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
                         <span class="site-menu-title">Calendar</span>
                 </a>
               </li>
