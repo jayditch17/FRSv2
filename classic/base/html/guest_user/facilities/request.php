@@ -151,6 +151,12 @@
                         <span class="site-menu-title">Home</span>
                 </a>
               </li>
+              <li class="site-menu-item has-sub">
+                    <a href="../calendar.php">
+                      <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
+                      <span class="site-menu-title">Calendar</span>
+                    </a>
+              </li>
               <li class="site-menu-category">Facilities</li>
               <li class="site-menu-item has-sub">
                 <a href="plaza.php">
@@ -260,7 +266,7 @@
     <!-- Footer -->
     <footer class="site-footer">
       <div class="site-footer-right">
-        © 2019 Facility Reservation System.
+        © Facility Reservation System.
       </div>
     </footer>
     <!-- Core  -->

@@ -211,25 +211,12 @@
                 </a>
               </li>
               <li class="site-menu-category">Reservation</li>
-              <li class="site-menu-item has-sub">
-                <a href="javascript:void(0)">
-                        <i class="site-menu-icon md-apps" aria-hidden="true"></i>
-                        <span class="site-menu-title">Apps</span>
-                                <span class="site-menu-arrow"></span>
-                    </a>
-                <ul class="site-menu-sub">
-                  <li class="site-menu-item">
-                    <a class="animsition-link" href="apps/contacts/contacts.html">
-                      <span class="site-menu-title">Contacts</span>
+                  <li class="site-menu-item has-sub">
+                    <a href="request.php">
+                      <i class="site-menu-icon md-apps" aria-hidden="true"></i>
+                      <span class="site-menu-title">Request</span>
                     </a>
                   </li>
-                  <li class="site-menu-item">
-                    <a class="animsition-link" href="apps/calendar/calendar.html">
-                      <span class="site-menu-title">Calendar</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
             </ul>
           </div>
         </div>
@@ -657,7 +644,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Footer -->
     <footer class="site-footer">
       <div class="site-footer-right">
-        © 2019 Facility Reservation System.
+        © Facility Reservation System.
       </div>
     </footer>
     <!-- Core  -->
