@@ -101,12 +101,12 @@
                 </i>
               </a>
             </li>
-            <li class="nav-item hidden-float">
+            <!-- <li class="nav-item hidden-float">
               <a class="nav-link icon wb-search" data-toggle="collapse" href="#" data-target="#site-navbar-search"
                 role="button">
                 <span class="sr-only">Toggle Search</span>
               </a>
-            </li>
+            </li> -->
           </ul>
           <!-- End Navbar Toolbar -->
     
@@ -134,7 +134,7 @@
           }
           ?>
                
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
                 aria-expanded="false" data-animation="scale-up" role="button">
                 <i class="icon wb-bell" aria-hidden="true"></i>
@@ -216,7 +216,7 @@
                   </a>
                 </div>
               </div>
-            </li>
+            </li> -->
             
             
           </ul>
@@ -273,7 +273,7 @@
             <li class="site-menu-item has-sub">
               <a href="equipments.php">
                 <i class="site-menu-icon wb-hammer" aria-hidden="true"></i>
-                <span class="site-menu-title">Equipments</span>
+                <span class="site-menu-title">Equipment</span>
               </a>
             </li>
             <li class="site-menu-item has-sub">
