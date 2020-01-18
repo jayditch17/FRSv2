@@ -680,7 +680,7 @@
     <!-- Footer -->
     <footer class="site-footer">
       <div class="site-footer-right">
-        © 2019 Facility Reservation System.
+        © Facility Reservation System.
       </div>
     </footer>
     <!-- Core  -->
