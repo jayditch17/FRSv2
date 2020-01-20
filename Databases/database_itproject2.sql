@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2020 at 05:18 PM
+-- Generation Time: Jan 20, 2020 at 09:52 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -106,19 +106,9 @@ CREATE TABLE `events` (
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `startTime` time NOT NULL,
-  `endTime` time NOT NULL
+  `endTime` time NOT NULL,
+  `color` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`eventID`, `firstName`, `lastName`, `mobNum`, `org`, `pos`, `adviser`, `eveName`, `evePlace`, `numPart`, `startDate`, `endDate`, `startTime`, `endTime`) VALUES
-(8, 'jayditch', 'balansi', '09999999999', 'Sikap', 'President', 'Juan Cruz', 'Benta Mangga', 'Devesse Plaza', '1000', '2020-01-03', '2020-01-10', '07:00:00', '19:00:00'),
-(9, 'dest', 'aldana', '09999999999', 'MilkTea', 'VP', 'Del', 'Palakasan ng Milktea', 'Devesse Plaza', '89', '2020-01-13', '2020-01-20', '10:59:00', '12:59:00'),
-(10, 'AC', 'Manahan', '09999999999', 'ac orgs', 'VP', 'Father', 'Mass', 'Amphi Theater', '500', '2020-01-12', '2020-01-12', '21:59:00', '12:58:00'),
-(11, 'Lester', 'De Guzman', '09999999999', 'Swimmers', 'Teacher', 'Jayditch', 'Swimming Lesson', 'Swimming Pool', '50', '2020-01-15', '2020-01-18', '13:00:00', '01:00:00'),
-(12, 'Yeza', 'Salazar', '09999999999', 'Runners', 'VP', 'Lester De Guzman', 'Run for your life', 'Oval', '54', '2020-01-10', '2020-01-11', '16:01:00', '03:03:00');
 
 -- --------------------------------------------------------
 
@@ -142,7 +132,9 @@ CREATE TABLE `facilities` (
 INSERT INTO `facilities` (`facilityID`, `facilityLevel`, `facilityRoom`, `roomType`, `roomDescription`, `roomCapacity`) VALUES
 (10, '100', '100', 'Laboratory', 'dwadefdsf', '500'),
 (11, '5', '515', 'Lecture', 'ayus', '500'),
-(12, '5', '433', 'Laboratory', 'lecturelecturelecturelecturelecture', '50');
+(12, '5', '433', 'Laboratory', 'lecturelecturelecturelecturelecture', '50'),
+(13, '5th Floor', 'D513', 'Lecture', 'Lecture', '50'),
+(14, '5', 'd515', 'Lecture', 'Lecture Room', '50');
 
 -- --------------------------------------------------------
 
@@ -165,15 +157,19 @@ CREATE TABLE `request_su` (
   `endDate` date NOT NULL,
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
-  `equipments` varchar(500) NOT NULL
+  `equipments` varchar(500) NOT NULL,
+  `color` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `request_su`
 --
 
-INSERT INTO `request_su` (`eventID`, `firstName`, `lastName`, `mobNum`, `org`, `pos`, `adviser`, `eveName`, `evePlace`, `numPart`, `startDate`, `endDate`, `startTime`, `endTime`, `equipments`) VALUES
-(5, 'jayditch', 'balansi', '09987897987', 'Orga', 'VP', 'Lester De Guzman', 'Benta BBQ', 'Devesse Plaza', '60', '2020-01-27', '2020-01-29', '10:56:00', '19:00:00', 'aaa');
+INSERT INTO `request_su` (`eventID`, `firstName`, `lastName`, `mobNum`, `org`, `pos`, `adviser`, `eveName`, `evePlace`, `numPart`, `startDate`, `endDate`, `startTime`, `endTime`, `equipments`, `color`) VALUES
+(11, 'darvin', 'takke', '09999999999', 'SIKAP', 'DOG', 'heha', 'SLU Got Talent', 'Amphi Theater', '50', '2020-01-16', '2020-01-19', '13:00:00', '14:00:00', 'dwa', '#787878'),
+(13, 'jayditch', 'balansi', '09999999999', 'ICON', 'VP', 'Mr. Cruz', 'SportsFest', 'Amphi Theater', '50', '2020-01-01', '2020-01-01', '01:00:00', '02:00:00', 'awdad', ''),
+(14, 'jayditch', 'balansi', '09999999999', 'icon', 'VP', 'del', 'mass', 'Amphi Theater', '80', '2020-01-29', '2020-01-31', '02:00:00', '01:00:00', 'dwadawd', ''),
+(15, 'jayditch', 'balansi', '09999999999', 'icon', 'VP', 'del', 'sample1', 'Devesse Plaza', '3', '2020-01-01', '2020-01-01', '15:01:00', '13:01:00', 'kawjdklwajdkljawlkd', '');
 
 -- --------------------------------------------------------
 
@@ -244,7 +240,8 @@ INSERT INTO `users` (`userID`, `firstName`, `lastName`, `orgs`, `pos`, `email`, 
 (12, 'guest', 'user', 'guest', 'user', 'guestuser@localhost.ph', 'Guest User', 'slu', 'Active', '2020-12-04'),
 (13, 'admin', 'user', 'dean', 'dean', 'dean@localhost.ph', 'Dean User', 'slu', 'Active', '2020-12-04'),
 (14, 'admin', 'user', 'sao', 'sao', 'sao@localhost.ph', 'Sao User', 'slu', 'Active', '2020-12-04'),
-(15, 'sample', 'sample', 'super', 'admin', 'superadmin123@localhost.ph', 'Super Admin', 'slu', 'Active', '2019-12-31');
+(15, 'sample', 'sample', 'super', 'admin', 'superadmin123@localhost.ph', 'Super Admin', 'slu', 'Active', '2019-12-31'),
+(16, 'Abigail', 'Rubrico', 'ICON', 'President', '2165751@slu.edu.ph', 'Guest User', 'slu', 'Active', '2020-12-04');
 
 --
 -- Indexes for dumped tables
@@ -272,7 +269,8 @@ ALTER TABLE `equipments`
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
-  ADD PRIMARY KEY (`eventID`);
+  ADD PRIMARY KEY (`eventID`),
+  ADD UNIQUE KEY `startTime` (`startTime`,`endTime`);
 
 --
 -- Indexes for table `facilities`
@@ -324,19 +322,19 @@ ALTER TABLE `equipments`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `facilities`
 --
 ALTER TABLE `facilities`
-  MODIFY `facilityID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `facilityID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `request_su`
 --
 ALTER TABLE `request_su`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `sao_office`
@@ -348,7 +346,7 @@ ALTER TABLE `sao_office`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
