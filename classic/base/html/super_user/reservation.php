@@ -305,7 +305,7 @@
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM request_su";
+                    $sql = "SELECT * FROM events Where color ='#787878'";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                           echo "<h4>Pending Reservation</h4>";

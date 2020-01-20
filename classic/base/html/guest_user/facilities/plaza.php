@@ -348,48 +348,48 @@
 
     <?php
 
-if (isset($_POST['post_act'])) {
-    # code...
-  require 'phpmailer/PHPMailerAutoLoad.php';
+// if (isset($_POST['post_act'])) {
+//     # code...
+//   require 'phpmailer/PHPMailerAutoLoad.php';
 
-// Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
+// // Instantiation and passing `true` enables exceptions
+// $mail = new PHPMailer(true);
 
-    //Server settings
-    $mail->SMTPDebug = 4;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'frsitproject@gmail.com';                     // SMTP username
-    $mail->Password   = 'frs@itproject123';                               // SMTP password
-    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                    // TCP port to connect to
+//     //Server settings
+//     $mail->SMTPDebug = 4;                      // Enable verbose debug output
+//     $mail->isSMTP();                                            // Send using SMTP
+//     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+//     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+//     $mail->Username   = 'frsitproject@gmail.com';                     // SMTP username
+//     $mail->Password   = 'frs@itproject123';                               // SMTP password
+//     $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+//     $mail->Port       = 587;                                    // TCP port to connect to
 
-    //Recipients
-    $mail->setFrom('frsitproject@gmail.com', 'FRS');
-    $mail->addAddress('frsitproject@gmail.com', 'Joe User');     // Add a recipient
-    //$mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('frsitproject@gmail.com', 'Information');
+//     //Recipients
+//     $mail->setFrom('frsitproject@gmail.com', 'FRS');
+//     $mail->addAddress('frsitproject@gmail.com', 'Joe User');     // Add a recipient
+//     //$mail->addAddress('ellen@example.com');               // Name is optional
+//     $mail->addReplyTo('frsitproject@gmail.com', 'Information');
 
-    // Attachments
-    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+//     // Attachments
+//     //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Reservation/Request';
-    $mail->Body    = 'New Reservation Request';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+//     // Content
+//     $mail->isHTML(true);                                  // Set email format to HTML
+//     $mail->Subject = 'Reservation/Request';
+//     $mail->Body    = 'New Reservation Request';
+//     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-if (!$mail->send()) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}else{
-    echo '<script type="text/javascript">'; 
-                                    echo 'alert("Reservation is now Pending. Thank You!");'; 
-                                    echo 'window.location.href = "amphi.php";';
-                                    echo '</script>';
-}
-}
+// if (!$mail->send()) {
+//     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// }else{
+//     echo '<script type="text/javascript">'; 
+//                                     echo 'alert("Reservation is now Pending. Thank You!");'; 
+//                                     echo 'window.location.href = "amphi.php";';
+//                                     echo '</script>';
+// }
+// }
 ?>
 
 
@@ -399,9 +399,9 @@ if (!$mail->send()) {
                     require_once "config.php";
                      
                     // Define variables and initialize with empty values
-                    $firstName = $lastName = $mobNum = $org = $pos = $adviser = $eveName = $numPart = $startDate = $endDate = $startTime =$endTime = $equip = "";
+                    $firstName = $lastName = $mobNum = $org = $pos = $adviser = $eveName = $numPart = $startDate = $endDate = $startTime =$endTime = "";
                     //$name_err = $address_err = $salary_err = "";
-                    $firstName_err = $lastName_err = $mobNum_err = $org_err = $pos_err = $adviser_err = $eveName_err = $numPart_err = $startDate_err = $endDate_err = $startTime_err = $endTime_err = $equip_err = "";
+                    $firstName_err = $lastName_err = $mobNum_err = $org_err = $pos_err = $adviser_err = $eveName_err = $numPart_err = $startDate_err = $endDate_err = $startTime_err = $endTime_err = "";
                      
                     // Processing form data when form is submitted
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -494,12 +494,12 @@ if (!$mail->send()) {
                             $endTime = $input_endTime;
                         }
 
-                        $input_equip= trim($_POST["equip"]);
-                        if(empty($input_equip)){
-                            $equip_err = "Please enter a name.";
-                        } else{
-                            $equip = $input_equip;
-                        }
+                        // $input_equip= trim($_POST["equip"]);
+                        // if(empty($input_equip)){
+                        //     $equip_err = "Please enter a name.";
+                        // } else{
+                        //     $equip = $input_equip;
+                        // }
 
 
                         
@@ -507,13 +507,13 @@ if (!$mail->send()) {
                           # code...
                         // }
                         // Check input errors before inserting in database
-                        if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err) && empty($equip_err)){
+                        if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err)){
                             // Prepare an insert statement
-                            $sql = "INSERT INTO request_su (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, equipments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                              
                             if($stmt = mysqli_prepare($link, $sql)){
                                 // Bind variables to the prepared statement as parameters
-                                mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_equip);
+                                mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_color);
                                 
                                 // Set parameters
                                 $param_fname = $firstName;
@@ -529,7 +529,8 @@ if (!$mail->send()) {
                                 $param_endDate = $endDate;
                                 $param_startTime = $startTime;
                                 $param_endTime = $endTime;
-                                $param_equip = $equip;
+                                //$param_equip = $equip;
+                                $param_color = '#787878';
                                 
                                 // Attempt to execute the prepared statement
                                 if(mysqli_stmt_execute($stmt)){
@@ -648,12 +649,7 @@ if (!$mail->send()) {
                                                   <span class="help-block"><?php echo $endTime_err;?></span>
                                                   <div class="modal-footer">
                                                 </div>
-                                                <div class="form-group <?php echo (!empty($equip_err)) ? 'has-error' : ''; ?>">
-                                                  <label>List of Equipments</label>
-                                                  <input type="text" name="equip" class="form-control" value="<?php echo $equip; ?>"placeholder="e.g. 100 chairs, 100 tables, ...">
-                                                  <span class="help-block"><?php echo $equip_err;?></span>
-                                                  <div class="modal-footer">
-                                                </div>
+                                                
                                                 <div class="modal-footer">
                                                <form role="form" method="post" enctype="multipart/form-data">
                               <input type="submit" class="btn btn-primary" name="post_act" value="Post Activity">
@@ -698,8 +694,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Include config file
                     require_once "config.php";
                     $evePlace = 'Devesse Plaza';
+                    $color = '#000099';
                     // Attempt select query execution
-                    $sql = "SELECT * FROM events WHERE evePlace = '$evePlace'";
+                    $sql = "SELECT * FROM events WHERE evePlace = '$evePlace' and color = '$color'";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                           echo "<h4>Events</h4>";

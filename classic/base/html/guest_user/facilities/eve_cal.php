@@ -19,7 +19,8 @@ foreach($result as $row){
 		'id'		=> $row["eventID"],
 		'title'		=> $row["eveName"],
 		'start'		=> $row["startDate"],
-		'end'		=> $row["endDate"]
+		'end'		=> $row["endDate"],
+		'color'		=> $row["color"]
 	);
 }
 

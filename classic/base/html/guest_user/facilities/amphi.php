@@ -329,35 +329,35 @@ header('location:../../../../../index.php');
       </div>
     </div>
     <?php
-    if (isset($_POST['post_act'])) {
-    # code...
-    require 'phpmailer/PHPMailerAutoLoad.php';
-    // Instantiation and passing `true` enables exceptions
-    $mail = new PHPMailer(true);
-    //Server settings
-    $mail->SMTPDebug = 4;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'frsitproject@gmail.com';                     // SMTP username
-    $mail->Password   = 'frs@itproject123';                               // SMTP password
-    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-    $mail->Port       = 587;                                    // TCP port to connect to
-    //Recipients
-    $mail->setFrom('frsitproject@gmail.com', 'FRS');
-    $mail->addAddress('frsitproject@gmail.com', 'Joe User');     // Add a recipient
-    //$mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('frsitproject@gmail.com', 'Information');
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Reservation/Request';
-    $mail->Body    = 'New Reservation Request';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-    if (!$mail->send()) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }else{
-    }
-    }
+    // if (isset($_POST['post_act'])) {
+    // # code...
+    // require 'phpmailer/PHPMailerAutoLoad.php';
+    // // Instantiation and passing `true` enables exceptions
+    // $mail = new PHPMailer(true);
+    // //Server settings
+    // $mail->SMTPDebug = 4;                      // Enable verbose debug output
+    // $mail->isSMTP();                                            // Send using SMTP
+    // $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    // $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    // $mail->Username   = 'frsitproject@gmail.com';                     // SMTP username
+    // $mail->Password   = 'frs@itproject123';                               // SMTP password
+    // $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    // $mail->Port       = 587;                                    // TCP port to connect to
+    // //Recipients
+    // $mail->setFrom('frsitproject@gmail.com', 'FRS');
+    // $mail->addAddress('frsitproject@gmail.com', 'Joe User');     // Add a recipient
+    // //$mail->addAddress('ellen@example.com');               // Name is optional
+    // $mail->addReplyTo('frsitproject@gmail.com', 'Information');
+    // // Content
+    // $mail->isHTML(true);                                  // Set email format to HTML
+    // $mail->Subject = 'Reservation/Request';
+    // $mail->Body    = 'New Reservation Request';
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    // if (!$mail->send()) {
+    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    // }else{
+    // }
+    // }
     // Include config file
     require_once "config.php";
     
@@ -625,7 +625,7 @@ header('location:../../../../../index.php');
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
           },
-          events: 'avr_cal.php',
+          events: 'amphi_cal.php'
           });
           calendar.render();
           });
@@ -637,7 +637,7 @@ header('location:../../../../../index.php');
             require_once "config.php";
             $evePlace = 'Amphi Theater';
             // Attempt select query execution
-            $sql = "SELECT * FROM events WHERE evePlace = '$evePlace'";
+            $sql = "SELECT * FROM request_su WHERE evePlace = '$evePlace'";
             if($result = mysqli_query($link, $sql)){
             if(mysqli_num_rows($result) > 0){
             echo "<h4>Events</h4>";
