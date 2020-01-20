@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2020 at 09:52 PM
+-- Generation Time: Jan 20, 2020 at 10:57 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -107,7 +107,8 @@ CREATE TABLE `events` (
   `endDate` date NOT NULL,
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
-  `color` varchar(50) NOT NULL
+  `color` varchar(50) NOT NULL,
+  `expire` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

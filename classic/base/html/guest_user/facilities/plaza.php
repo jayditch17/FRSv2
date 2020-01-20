@@ -348,16 +348,6 @@ header('location:../../../../../index.php');
     } else{
     $endTime = $input_endTime;
     }
-    // $input_equip= trim($_POST["equip"]);
-    // if(empty($input_equip)){
-    //     $equip_err = "Please enter a name.";
-    // } else{
-    //     $equip = $input_equip;
-    // }
-    
-    // if (mysqli_num_rows) {
-    # code...
-    // }
     // Check input errors before inserting in database
     $place = 'Devesse Plaza';
     $check=mysqli_query($link,"SELECT * from events where evePlace = '$place' and startDate = '$startDate' and endDate='$endDate' and startTime='$startTime' and endTime='$endTime'");
@@ -370,11 +360,19 @@ header('location:../../../../../index.php');
     } else
     if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err)){
     // Prepare an insert statement
-    $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, color, expire) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     if($stmt = mysqli_prepare($link, $sql)){
     // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_color);
+    mysqli_stmt_bind_param($stmt, "sssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_color, $param_exDate);
+
+    // $sql = "SELECT * FROM events";
+    // $result = mysqli_query($link, $sql);
+    // while ($row = mysqli_fetch_array($result)) {
+      # code...
+      $expire = date('Y-m-d H:i:s', strtotime('+4 days'));
+    
+    
     
     // Set parameters
     $param_fname = $firstName;
@@ -392,6 +390,8 @@ header('location:../../../../../index.php');
     $param_endTime = $endTime;
     //$param_equip = $equip;
     $param_color = '#787878';
+    $param_exDate =$expire;
+    //}
     
     // Attempt to execute the prepared statement
     if(mysqli_stmt_execute($stmt)){

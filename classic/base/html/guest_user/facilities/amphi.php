@@ -137,12 +137,10 @@ header('location:../../../../../index.php');
                 echo '</script>';
                 }
                 ?>
-
               </ul>
               <!-- End Navbar Toolbar Right -->
             </div>
             <!-- End Navbar Collapse -->
-
           </div>
         </nav>
         <div class="site-menubar">
@@ -345,40 +343,43 @@ header('location:../../../../../index.php');
     } else{
     $equip = $input_equip;
     }
-                        $place = 'Amphi Theater';
-
-                        $check=mysqli_query($link,"SELECT * from events where evePlace = '$place' and startDate = '$startDate' and endDate='$endDate' and startTime='$startTime' and endTime='$endTime'");
-                        $checkrows=mysqli_num_rows($check);
-                        if($checkrows>0) {
-                             echo '<script type="text/javascript">'; 
-                                    echo 'alert("Reservation/Event Already Exist!!!");'; 
-                                    echo 'window.location.href = "amphi.php";';
-                                    echo '</script>';
-                         } else
+    $place = 'Amphi Theater';
+    $check=mysqli_query($link,"SELECT * from events where evePlace = '$place' and startDate = '$startDate' and endDate='$endDate' and startTime='$startTime' and endTime='$endTime'");
+    $checkrows=mysqli_num_rows($check);
+    if($checkrows>0) {
+    echo '<script type="text/javascript">';
+    echo 'alert("Reservation/Event Already Exist!!!");';
+    echo 'window.location.href = "amphi.php";';
+    echo '</script>';
+    } else
     if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err) && empty($equip_err)){
     // Prepare an insert statement
-   $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                             
-                            if($stmt = mysqli_prepare($link, $sql)){
-                                // Bind variables to the prepared statement as parameters
-                                mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_color);
-                                
-                                // Set parameters
-                                $param_fname = $firstName;
-                                $param_lName = $lastName;
-                                $param_mobNum = $mobNum;
-                                $param_org = $org;
-                                $param_pos = $pos;
-                                $param_adviser = $adviser;
-                                $param_eveName = $eveName;
-                                $param_evePlace = 'Amphi Theater';
-                                $param_numPart = $numPart;
-                                $param_startDate = $startDate;
-                                $param_endDate = $endDate;
-                                $param_startTime = $startTime;
-                                $param_endTime = $endTime;
-                                //$param_equip = $equip;
-                                $param_color = '#787878';
+    $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, color, expire) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    if($stmt = mysqli_prepare($link, $sql)){
+    // Bind variables to the prepared statement as parameters
+    mysqli_stmt_bind_param($stmt, "sssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_color, $param_exDate);
+
+
+    $expire = date('Y-m-d H:i:s', strtotime('+4 days'));
+    
+    // Set parameters
+    $param_fname = $firstName;
+    $param_lName = $lastName;
+    $param_mobNum = $mobNum;
+    $param_org = $org;
+    $param_pos = $pos;
+    $param_adviser = $adviser;
+    $param_eveName = $eveName;
+    $param_evePlace = 'Amphi Theater';
+    $param_numPart = $numPart;
+    $param_startDate = $startDate;
+    $param_endDate = $endDate;
+    $param_startTime = $startTime;
+    $param_endTime = $endTime;
+    //$param_equip = $equip;
+    $param_color = '#787878';
+    $param_exDate =$expire;
     
     // Attempt to execute the prepared statement
     if(mysqli_stmt_execute($stmt)){
@@ -530,8 +531,8 @@ header('location:../../../../../index.php');
             require_once "config.php";
             $evePlace = 'Amphi Theater';
             // Attempt select query execution
-           $color = '#000099';
-                    // Attempt select query execution
+            $color = '#000099';
+            // Attempt select query execution
             $sql = "SELECT * FROM events WHERE evePlace = '$evePlace' and color = '$color'";
             if($result = mysqli_query($link, $sql)){
             if(mysqli_num_rows($result) > 0){
@@ -587,8 +588,6 @@ header('location:../../../../../index.php');
     </div>
   </div>
 </div>
-
-
 </div>
 </div>
 <!-- End Panel Table Add Row -->
@@ -613,7 +612,6 @@ header('location:../../../../../index.php');
 <script src="../../../../global/global2/vendor/asscrollable/jquery-asScrollable.js"></script>
 <script src="../../../../global/global2/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
 <script src="../../../../global/global2/vendor/waves/waves.js"></script>
-
 <!-- Plugins -->
 <script src="../../../../global/global2/vendor/switchery/switchery.js"></script>
 <script src="../../../../global/global2/vendor/intro-js/intro.js"></script>
@@ -625,23 +623,19 @@ header('location:../../../../../index.php');
 <script src="../../../../global/global2/vendor/jvectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
 <script src="../../../../global/global2/vendor/matchheight/jquery.matchHeight-min.js"></script>
 <script src="../../../../global/global2/vendor/peity/jquery.peity.min.js"></script>
-
 <!-- Scripts -->
 <script src="../../../../global/global2/js/Component.js"></script>
 <script src="../../../../global/global2/js/Plugin.js"></script>
 <script src="../../../../global/global2/js/Base.js"></script>
 <script src="../../../../global/global2/js/Config.js"></script>
-
 <script src="../../../assets2/js/Section/Menubar.js"></script>
 <script src="../../../assets2/js/Section/GridMenu.js"></script>
 <script src="../../../assets2/js/Section/Sidebar.js"></script>
 <script src="../../../assets2/js/Section/PageAside.js"></script>
 <script src="../../../assets2js/Plugin/menu.js"></script>
-
 <script src="../../../../global/global2/js/config/colors.js"></script>
 <script src="../../../assets2/js/config/tour.js"></script>
 <script>Config.set('assets', '../assets');</script>
-
 <!-- Page -->
 <script src="../../../assets2/js/Site.js"></script>
 <script src="../../../../global/global2/js/Plugin/asscrollable.js"></script>
@@ -650,8 +644,6 @@ header('location:../../../../../index.php');
 <script src="../../../../global/global2/js/Plugin/matchheight.js"></script>
 <script src="../../../../global/global2/js/Plugin/jvectormap.js"></script>
 <script src="../../../../global/global2/js/Plugin/peity.js"></script>
-
 <script src="../../../assets2/examples/js/dashboard/v1.js"></script>
-
 </body>
 </html>

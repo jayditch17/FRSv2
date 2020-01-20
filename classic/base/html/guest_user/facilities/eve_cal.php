@@ -5,7 +5,7 @@ $connect = new PDO('mysql:host=localhost;dbname=database_itproject2', 'root', ''
 $data = array();
  $evePlace = 'Devesse Plaza';
 
-$query = "SELECT * FROM events WHERE evePlace = '$evePlace' ORDER BY eventID";
+$query = "SELECT * FROM events WHERE evePlace = '$evePlace' and expire >= CURDATE() ORDER BY eventID";
 
 $statement = $connect->prepare($query);
 
