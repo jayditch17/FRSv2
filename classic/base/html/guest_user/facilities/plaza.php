@@ -355,7 +355,7 @@ header('location:../../../../../index.php');
     if($checkrows>0) {
     echo '<script type="text/javascript">';
     echo 'alert("Reservation/Event Already Exist!!!");';
-    echo 'window.location.href = "amphi.php";';
+    echo 'window.location.href = "plaza.php";';
     echo '</script>';
     } else
     if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err)){
@@ -366,10 +366,6 @@ header('location:../../../../../index.php');
     // Bind variables to the prepared statement as parameters
     mysqli_stmt_bind_param($stmt, "sssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_color, $param_exDate);
 
-    // $sql = "SELECT * FROM events";
-    // $result = mysqli_query($link, $sql);
-    // while ($row = mysqli_fetch_array($result)) {
-      # code...
       $expire = date('Y-m-d H:i:s', strtotime('+4 days'));
     
     
