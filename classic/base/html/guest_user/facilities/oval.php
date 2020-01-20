@@ -98,11 +98,6 @@
           <img class="navbar-brand-logo" src="../../../assets2/images/samcis.png" title="Remark">
           <span class="navbar-brand-text hidden-xs-down"> Guest User</span>
         </div>
-        <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
-          data-toggle="collapse">
-          <span class="sr-only">Toggle Search</span>
-          <i class="icon md-search" aria-hidden="true"></i>
-        </button>
       </div>
     
       <div class="navbar-container container-fluid">
@@ -116,12 +111,6 @@
                   <span class="sr-only">Toggle menubar</span>
                   <span class="hamburger-bar"></span>
                 </i>
-              </a>
-            </li>
-            <li class="nav-item hidden-float">
-              <a class="nav-link icon md-search" data-toggle="collapse" href="#" data-target="#site-navbar-search"
-                role="button">
-                <span class="sr-only">Toggle Search</span>
               </a>
             </li>
           </ul>
@@ -151,108 +140,12 @@
             echo '</script>';
           }
           ?>
-            <li class="nav-item dropdown">
-              <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
-                aria-expanded="false" data-animation="scale-up" role="button">
-                <i class="icon md-notifications" aria-hidden="true"></i>
-                <span class="badge badge-pill badge-danger up">5</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
-                <div class="dropdown-menu-header">
-                  <h5>NOTIFICATIONS</h5>
-                  <span class="badge badge-round badge-danger">New 5</span>
-                </div>
-    
-                <div class="list-group">
-                  <div data-role="container">
-                    <div data-role="content">
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">A new order has been placed</h6>
-                            <time class="media-meta" datetime="2017-06-12T20:50:48+08:00">5 hours ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon md-account bg-green-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Completed the task</h6>
-                            <time class="media-meta" datetime="2017-06-11T18:29:20+08:00">2 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon md-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Settings updated</h6>
-                            <time class="media-meta" datetime="2017-06-11T14:05:00+08:00">2 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon md-calendar bg-blue-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Event started</h6>
-                            <time class="media-meta" datetime="2017-06-10T13:50:18+08:00">3 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon md-comment bg-orange-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Message received</h6>
-                            <time class="media-meta" datetime="2017-06-10T12:34:48+08:00">3 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-menu-footer">
-                  <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
-                    <i class="icon md-settings" aria-hidden="true"></i>
-                  </a>
-                  <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
-                    All notifications
-                  </a>
-                </div>
-              </div>
-            </li>
+
           </ul>
           <!-- End Navbar Toolbar Right -->
         </div>
         <!-- End Navbar Collapse -->
-    
-        <!-- Site Navbar Seach -->
-        <div class="collapse navbar-search-overlap" id="site-navbar-search">
-          <form role="search">
-            <div class="form-group">
-              <div class="input-search">
-                <i class="input-search-icon md-search" aria-hidden="true"></i>
-                <input type="text" class="form-control" name="site-search" placeholder="Search...">
-                <button type="button" class="input-search-close icon md-close" data-target="#site-navbar-search"
-                  data-toggle="collapse" aria-label="Close"></button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- End Site Navbar Seach -->
+
       </div>
     </nav>    
     <div class="site-menubar">
@@ -269,7 +162,7 @@
               </li>
               <li class="site-menu-item has-sub">
                 <a href="../calendar.php">
-                        <i class="site-menu-icon icon wb-home" aria-hidden="true"></i>
+                        <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
                         <span class="site-menu-title">Calendar</span>
                 </a>
               </li>
@@ -750,7 +643,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Footer -->
     <footer class="site-footer">
       <div class="site-footer-right">
-        © 2019 Facility Reservation System.
+        © Facility Reservation System.
       </div>
     </footer>
     <!-- Core  -->

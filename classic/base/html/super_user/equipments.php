@@ -15,7 +15,7 @@
     <meta name="description" content="bootstrap admin template">
     <meta name="author" content="">
     
-    <title>Equipments | Super User</title>
+    <title>Equipment | Super User</title>
     
     <link rel="apple-touch-icon" href="../../assets/images/samcis.png">
     <link rel="shortcut icon" href="../../assets/images/favicon.ico">
@@ -101,12 +101,12 @@
                 </i>
               </a>
             </li>
-            <li class="nav-item hidden-float">
+            <!-- <li class="nav-item hidden-float">
               <a class="nav-link icon wb-search" data-toggle="collapse" href="#" data-target="#site-navbar-search"
                 role="button">
                 <span class="sr-only">Toggle Search</span>
               </a>
-            </li>
+            </li> -->
           </ul>
           <!-- End Navbar Toolbar -->
     
@@ -133,7 +133,7 @@
             echo '</script>';
           }
           ?>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
                 aria-expanded="false" data-animation="scale-up" role="button">
                 <i class="icon wb-bell" aria-hidden="true"></i>
@@ -215,7 +215,7 @@
                   </a>
                 </div>
               </div>
-            </li>
+            </li> -->
             
             
           </ul>
@@ -272,7 +272,7 @@
               <li class="site-menu-item has-sub  active">
                 <a href="equipments.php">
                         <i class="site-menu-icon wb-hammer" aria-hidden="true"></i>
-                        <span class="site-menu-title">Equipments</span>
+                        <span class="site-menu-title">Equipment</span>
                 </a>
               </li>
               <li class="site-menu-item has-sub">
@@ -323,7 +323,7 @@
         <div class="row" data-plugin="matchHeight" data-by-row="true">
           
         <div class="col-sm-12">
-          <h3>Equipments</h1>
+          <h3>Equipment</h1>
         </div>  
 
           <div class="page-header clearfix">
@@ -432,7 +432,7 @@
     <!-- Footer -->
     <footer class="site-footer">
       <div class="site-footer-right">
-        © 2019 Facility Reservation System.
+        © Facility Reservation System.
       </div>
     </footer>
     <!-- Core  -->
