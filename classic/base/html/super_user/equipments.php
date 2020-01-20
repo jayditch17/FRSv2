@@ -327,7 +327,7 @@
         </div>  
 
           <div class="page-header clearfix">
-              <a href="php_action/add_event.php" class="btn btn-success pull-right">Add Event</a>
+              <a href="php_action/add_event.php" class="btn btn-success pull-right">Add Equipment</a>
           </div>
 
         
