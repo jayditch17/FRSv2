@@ -14,7 +14,7 @@ header('location:../../../../../index.php');
     <meta name="description" content="bootstrap material admin template">
     <meta name="author" content="">
     
-    <title>AVR | Guest User</title>
+    <title>Amphi Theater | Guest User</title>
     
     <link rel="apple-touch-icon" href="../../../assets2/images/samcis.png">
     <link rel="shortcut icon" href="../../../assets2/images/samcis.png">
@@ -294,9 +294,7 @@ header('location:../../../../../index.php');
     $input_pos = trim($_POST["pos"]);
     if(empty($input_pos)){
     $pos_err = "Please enter a name.";
-    } elseif(!filter_var($input_pos, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-    $pos_err = "Please enter a valid name.";
-    } else{
+    }  else{
     $pos = $input_pos;
     }
     $input_adviser = trim($_POST["adviser"]);
@@ -349,36 +347,38 @@ header('location:../../../../../index.php');
     }
                         $place = 'Amphi Theater';
 
-                        $check=mysqli_query($link,"SELECT * from request_su where evePlace = '$place' and startDate = '$startDate' and endDate='$endDate' and startTime='$startTime' and endTime='$endTime'");
+                        $check=mysqli_query($link,"SELECT * from events where evePlace = '$place' and startDate = '$startDate' and endDate='$endDate' and startTime='$startTime' and endTime='$endTime'");
                         $checkrows=mysqli_num_rows($check);
                         if($checkrows>0) {
                              echo '<script type="text/javascript">'; 
-                                    echo 'alert("Reservation Already Exist!!!");'; 
+                                    echo 'alert("Reservation/Event Already Exist!!!");'; 
                                     echo 'window.location.href = "amphi.php";';
                                     echo '</script>';
                          } else
     if(empty($firstName_err) && empty($lastName_err) && empty($mobNum_err) && empty($org_err) && empty($pos_err) && empty($adviser_err) && empty($eveName_err) && empty($numPart_err) && empty($startDate_err) && empty($endDate_err) && empty($startTime_err) && empty($endTime_err) && empty($equip_err)){
     // Prepare an insert statement
-    $sql = "INSERT INTO request_su (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, equipments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    if($stmt = mysqli_prepare($link, $sql)){
-    // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_equip);
-    
-    // Set parameters
-    $param_fname = $firstName;
-    $param_lName = $lastName;
-    $param_mobNum = $mobNum;
-    $param_org = $org;
-    $param_pos = $pos;
-    $param_adviser = $adviser;
-    $param_eveName = $eveName;
-    $param_evePlace = 'Amphi Theater';
-    $param_numPart = $numPart;
-    $param_startDate = $startDate;
-    $param_endDate = $endDate;
-    $param_startTime = $startTime;
-    $param_endTime = $endTime;
-    $param_equip = $equip;
+   $sql = "INSERT INTO events (firstName, lastName, mobNum, org, pos, adviser, eveName, evePlace, numPart, startDate, endDate, startTime, endTime, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                             
+                            if($stmt = mysqli_prepare($link, $sql)){
+                                // Bind variables to the prepared statement as parameters
+                                mysqli_stmt_bind_param($stmt, "ssssssssssssss", $param_fname, $param_lName, $param_mobNum, $param_org, $param_pos, $param_adviser, $param_eveName, $param_evePlace, $param_numPart, $param_startDate, $param_endDate, $param_startTime, $param_endTime, $param_color);
+                                
+                                // Set parameters
+                                $param_fname = $firstName;
+                                $param_lName = $lastName;
+                                $param_mobNum = $mobNum;
+                                $param_org = $org;
+                                $param_pos = $pos;
+                                $param_adviser = $adviser;
+                                $param_eveName = $eveName;
+                                $param_evePlace = 'Amphi Theater';
+                                $param_numPart = $numPart;
+                                $param_startDate = $startDate;
+                                $param_endDate = $endDate;
+                                $param_startTime = $startTime;
+                                $param_endTime = $endTime;
+                                //$param_equip = $equip;
+                                $param_color = '#787878';
     
     // Attempt to execute the prepared statement
     if(mysqli_stmt_execute($stmt)){
@@ -530,7 +530,9 @@ header('location:../../../../../index.php');
             require_once "config.php";
             $evePlace = 'Amphi Theater';
             // Attempt select query execution
-            $sql = "SELECT * FROM request_su WHERE evePlace = '$evePlace'";
+           $color = '#000099';
+                    // Attempt select query execution
+            $sql = "SELECT * FROM events WHERE evePlace = '$evePlace' and color = '$color'";
             if($result = mysqli_query($link, $sql)){
             if(mysqli_num_rows($result) > 0){
             echo "<h4>Events</h4>";
