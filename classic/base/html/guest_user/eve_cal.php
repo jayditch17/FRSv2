@@ -4,7 +4,7 @@ $connect = new PDO('mysql:host=localhost;dbname=database_itproject2', 'root', ''
 
 $data = array();
 
-$query = "SELECT * FROM events ORDER BY eventID";
+$query = "SELECT * FROM events where color='#000099' ORDER BY eventID";
 
 $statement = $connect->prepare($query);
 
@@ -18,7 +18,8 @@ foreach($result as $row){
 		'id'		=> $row["eventID"],
 		'title'		=> $row["eveName"],
 		'start'		=> $row["startDate"],
-		'end'		=> $row["endDate"]
+		'end'		=> $row["endDate"],
+		'color'		=>$row["color"]
 	);
 }
 

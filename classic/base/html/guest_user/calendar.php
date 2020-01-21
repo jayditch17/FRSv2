@@ -171,7 +171,7 @@
                         <span class="site-menu-title">Home</span>
                 </a>
               </li>
-              <li class="site-menu-item has-sub">
+              <li class="site-menu-item has-sub active">
                 <a href="facilities/calendar.php">
                         <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
                         <span class="site-menu-title">Calendar</span>
@@ -190,7 +190,7 @@
                         <span class="site-menu-title">Amphitheater</span>
                 </a>
               </li>
-              <li class="site-menu-item has-sub active">
+              <li class="site-menu-item has-sub">
                 <a href="facilities/avr.php">
                         <i class="site-menu-icon icon ml-display-screen" aria-hidden="true"></i>
                         <span class="site-menu-title">AVR</span>

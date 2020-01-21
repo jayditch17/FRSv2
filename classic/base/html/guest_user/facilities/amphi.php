@@ -33,6 +33,7 @@ header('location:../../../../../index.php');
     <script src='../../../fullcalendar-4.3.1/packages/daygrid/main.js'></script>
     <script src='../../../fullcalendar-4.3.1/packages/timegrid/main.js'></script>
     <script src='../../../fullcalendar-4.3.1/packages/list/main.js'></script>
+    <script src='../../../fullcalendar-4.3.1/packages/google-calendar/main.js'></script>
     
     <!-- Plugins -->
     <link rel="stylesheet" href="../../../../global/global2/vendor/animsition/animsition.css">
@@ -540,16 +541,24 @@ header('location:../../../../../index.php');
             </div>
           </div>
           <script>
+            // import { Calendar } from '@fullcalendar/core';
+            // import googleCalendarPlugin from '@fullcalendar/google-calendar';
           document.addEventListener('DOMContentLoaded', function() {
           var calendarEl = document.getElementById('calendar');
           var calendar = new FullCalendar.Calendar(calendarEl, {
+            // let calendar = new Calendar(calendarEl, {
           plugins: [ 'dayGrid', 'timeGrid', 'list', 'interaction' ],
+          //plugins: [ googleCalendarPlugin ],
+
+          // var calendar = new FullCalendar.Calendar(calendarEl, {
+          // plugins: [ 'googleCalendar' ],
           header: {
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
           },
-          events: 'amphi_cal.php'
+          events: 'amphi_cal.php',
+
           });
           calendar.render();
           });
