@@ -27,6 +27,7 @@ if (isset($_POST["btnLogin"])) {
 				# code...
 				//$_SESSION['LoginUser'] = $row["email"];
 				$_SESSION['login'] = true;
+				$_SESSION['user'] = $row;
 				header('Location: ../classic/base/html/super_user/super_user.php');
 			}else if(($row["user_type"] == "Dean User")  && ($row["status"] == "Active")){
 				    
@@ -65,6 +66,7 @@ if (isset($_POST["btnLogin"])) {
 					echo '</script>';
 		          } else {
 		            $_SESSION['login'] = true;
+		            $_SESSION['user'] = $row;
 					
 				header('Location: ../classic/base/html/guest_user/guest_user.php');
 		          }

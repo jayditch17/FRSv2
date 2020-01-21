@@ -15,6 +15,7 @@
     <meta name="author" content="">
     
     <title>Dashboard | Super User</title>
+
     
     <link rel="apple-touch-icon" href="../../assets/images/samcis.png">
     <link rel="shortcut icon" href="../../assets/images/favicon.ico">
@@ -110,6 +111,7 @@
           <!-- End Navbar Toolbar -->
     
           <!-- Navbar Toolbar Right -->
+          
           <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
             <li class="nav-item dropdown">
               <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
@@ -122,6 +124,24 @@
               <div class="dropdown-menu" role="menu">
              <!--    <a class="dropdown-item" href="../../../../index.php" role="menuitem"><i class="icon wb-power" aria-hidden="true" name="logout"></i> Logout</a>
             </li> -->
+            <div>
+                  <?php  if (isset($_SESSION['user'])) : ?>
+                    <strong>
+                      <?php
+                      echo $_SESSION['user']['firstName'];
+                      ?>
+                    </strong>
+                    <br>
+
+                    <small>
+                      <i>(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+                      
+
+                      
+                    </small>
+
+                  <?php endif ?>
+                </div>
            <form method="post" class="dropdown-item">
             <button name="logout" class='btn btn-danger my-2'>Logout</button>
           </form>
@@ -134,89 +154,14 @@
             echo '</script>';
           }
           ?>
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
-                aria-expanded="false" data-animation="scale-up" role="button">
-                <i class="icon wb-bell" aria-hidden="true"></i>
-                <span class="badge badge-pill badge-danger up">5</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
-                <div class="dropdown-menu-header">
-                  <h5>NOTIFICATIONS</h5>
-                  <span class="badge badge-round badge-danger">New 5</span>
-                </div>
-    
-                <div class="list-group">
-                  <div data-role="container">
-                    <div data-role="content">
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon wb-order bg-red-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">A new order has been placed</h6>
-                            <time class="media-meta" datetime="2018-06-12T20:50:48+08:00">5 hours ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon wb-user bg-green-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Completed the task</h6>
-                            <time class="media-meta" datetime="2018-06-11T18:29:20+08:00">2 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon wb-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Settings updated</h6>
-                            <time class="media-meta" datetime="2018-06-11T14:05:00+08:00">2 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon wb-calendar bg-blue-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Event started</h6>
-                            <time class="media-meta" datetime="2018-06-10T13:50:18+08:00">3 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                      <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                        <div class="media">
-                          <div class="pr-10">
-                            <i class="icon wb-chat bg-orange-600 white icon-circle" aria-hidden="true"></i>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="media-heading">Message received</h6>
-                            <time class="media-meta" datetime="2018-06-10T12:34:48+08:00">3 days ago</time>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-menu-footer">
-                  <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
-                    <i class="icon wb-settings" aria-hidden="true"></i>
-                  </a>
-                  <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
-                    All notifications
-                  </a>
-                </div>
+
+          <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                  <div class="dropdown-menu" role="menu">">
+                
               </div>
-            </li> -->
+              </ul>
+
+     
             
           </ul>
           <!-- End Navbar Toolbar Right -->
@@ -297,62 +242,41 @@
     <div class="page">
       <div class="page-content container-fluid">
         <div class="row" data-plugin="matchHeight" data-by-row="true">
-          <div class="col-xxl-5 col-lg-5 ">
-            <div class="card-header bg-blue-600 white">
-              <?php
-                require_once "config.php";
-                $sql = "SELECT * FROM users";
-                $query = mysqli_query($link, $sql);
-
-                echo "<h3 class = 'text-center'>Accounts</h3>";
-                echo "<h3 class = 'text-center'>".mysqli_num_rows($query)."</h3>";
-                ?>
-              </div>
-
+          <!-- <div class="col-xxl-5 col-lg-5 ">
            
-          </div>
-
-          <div class="col-xxl-5 col-lg-5">
-            <div class="card-header bg-white-600">
-              <?php
+          </div> -->
+          <div class="col-lg-12">
+            <div class="card card-chart">
+              <div class="card-header bg-info">
+                <h3 class="card-title text-center">Events</h3>
+                                
+              </div>
+              <div class="card-body bg-secondary">
+                <?php
                 require_once "config.php";
-                $sql = "SELECT * FROM facilities";
+                $sql = "SELECT * FROM events where color='#000099'";
                 $query = mysqli_query($link, $sql);
                 
-               echo "<h3 class = 'text-center'>Facilities</h3>";
-                echo "<h3 class = 'text-center'>".mysqli_num_rows($query)."</h3>";
+                echo "<h1 class = 'text-center'>".mysqli_num_rows($query)."</h1>";
                 ?>
               </div>
-           
+            </div>
           </div>
-
-          <div class="col-xxl-5 col-lg-5 ">
-            <div class="card-header">
-              <?php
+                    <div class="col-lg-12">
+            <div class="card card-chart">
+              <div class="card-header bg-info">
+                <h3 class="card-title text-center">Reservations</h3>
+                                
+              </div>
+              <div class="card-body bg-secondary">
+                <?php
                 require_once "config.php";
-                $sql = "SELECT * FROM request_su";
+                $sql = "SELECT * FROM events where color='#787878'";
                 $query = mysqli_query($link, $sql);
                 
-                echo "<h3 class = 'text-center'>Request/s</h3>";
-                echo "<h3 class = 'text-center'>".mysqli_num_rows($query)."</h3>";
+                echo "<h1 class = 'text-center'>".mysqli_num_rows($query)."</h1>";
                 ?>
               </div>
-           
-          </div>
-
-          <div class="col-xxl-5 col-lg-5">
-            <div class="card-header bg-blue-600 white">
-              <?php
-                require_once "config.php";
-                $sql = "SELECT * FROM events";
-                $query = mysqli_query($link, $sql);
-                
-                echo "<h3 class = 'text-center'>Event/s</h3>";
-                echo "<h3 class = 'text-center'>".mysqli_num_rows($query)."</h3>";
-                ?>
-              </div>
-           
-          </div>
 
         </div>
       </div>
@@ -407,6 +331,7 @@
     <script src="../../../global/js/config/colors.js"></script>
     <script src="../../assets/js/config/tour.js"></script>
     <script>Config.set('assets', '../../assets');</script>
+
     
     <!-- Page -->
     <script src="../../assets/js/Site.js"></script>

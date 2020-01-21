@@ -124,6 +124,24 @@ header('location:../../../../../index.php');
                 </span>
               </a>
               <div class="dropdown-menu" role="menu">
+                <div>
+                  <?php  if (isset($_SESSION['user'])) : ?>
+                    <strong>
+                      <?php
+                      echo $_SESSION['user']['firstName'];
+                      ?>
+                    </strong>
+                    <br>
+
+                    <small>
+                      <i>(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+                      
+
+                      
+                    </small>
+
+                  <?php endif ?>
+                </div>
                 
                 <form method="post" class="dropdown-item">
                   <button name="logout" class='btn btn-danger my-2'>Logout</button>
@@ -443,7 +461,19 @@ header('location:../../../../../index.php');
                     </div>
                     <div class="form-group <?php echo (!empty($org_err)) ? 'has-error' : ''; ?>">
                       <label>Organization</label>
-                      <input type="text" name="org" class="form-control" value="<?php echo $org; ?>">
+                      <!-- <input type="text" name="org" class="form-control" value="<?php echo $org; ?>"> -->
+                      <select style="color: black;" name="org" class="form-control" value="<?php echo $org; ?>">
+                              <option value disabled selected="">Please Select</option>
+                              <option value="ICON">ICON</option>
+                              <option value="SIKAP">SIKAP</option>
+                              <option value="RPG">RPG</option>
+                              <option value="JPIA">JPIA</option>
+                              <option value="PESO">PESO</option>
+                              <option value="YES">YES</option>
+                              <option value="BPI">BPI</option>
+                              <option value="KASAMA-SSC">KASAMA-SSC</option>
+                              <option value="GCS">GCS</option>
+                            </select>
                       <span class="help-block"><?php echo $org_err;?></span>
                     </div>
                     <div class="form-group <?php echo (!empty($pos_err)) ? 'has-error' : ''; ?>">

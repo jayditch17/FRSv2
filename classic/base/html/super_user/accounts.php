@@ -117,7 +117,24 @@
                 </span>
               </a>
               <div class="dropdown-menu" role="menu">
+                <div>
+                  <?php  if (isset($_SESSION['user'])) : ?>
+                    <strong>
+                      <?php
+                      echo $_SESSION['user']['firstName'];
+                      ?>
+                    </strong>
+                    <br>
 
+                    <small>
+                      <i>(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+                      
+
+                      
+                    </small>
+
+                  <?php endif ?>
+                </div>
               <form method="post" class="dropdown-item">
             <button name="logout" class='btn btn-danger my-2'>Logout</button>
           </form>
@@ -329,7 +346,7 @@
           
                   
                     <div class="page-header clearfix">
-                        <a class="btn btn-success pull-right" data-toggle="modal" data-target="#basicModal">Add Account</a>
+                        <a class="btn btn-info pull-right" data-toggle="modal" data-target="#basicModal">Add Account</a>
                         <a class="btn btn-info pull-right" data-toggle="modal" data-target="#semester">Set Semester Date</a>
                     </div>
 
@@ -343,8 +360,9 @@
                                 <span aria-hidden="true">×</span>
                               </button>
                             </div>
-
+                            
                             <div class="modal-body">
+                              
                               <form action="setsemesterdate.php" method="post">
                                 <?php
                                   $sql2 = mysqli_query($conn, "SELECT * FROM semesterdate");
@@ -475,9 +493,9 @@
                                         
                                     
                                         echo "<td>";
-                                            echo "<a href='php_action/read_acc.php?userID=". $row['userID'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-                                            echo "<a href='php_action/edit_acc.php?userID=". $row['userID'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='php_action/delete_acc.php?userID=". $row['userID'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
+                                            //echo "<a href='php_action/read_acc.php?userID=". $row['userID'] ."'></a>";
+                                            echo "<a href='php_action/edit_acc.php?userID=". $row['userID'] ."' title='Update Record' data-toggle='tooltip' class='btn btn-info pull-right'>UPDATE</a>";
+                                            echo "<a href='php_action/delete_acc.php?userID=". $row['userID'] ."' title='Delete Record' data-toggle='tooltip' class ='btn btn-danger'>DELETE</a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

@@ -104,7 +104,24 @@
                 </span>
               </a>
               <div class="dropdown-menu" role="menu">
-                
+                <div>
+                  <?php  if (isset($_SESSION['user'])) : ?>
+                    <strong>
+                      <?php
+                      echo $_SESSION['user']['firstName'];
+                      ?>
+                    </strong>
+                    <br>
+
+                    <small>
+                      <i>(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+                      
+
+                      
+                    </small>
+
+                  <?php endif ?>
+                </div>
           <form method="post" class="dropdown-item">
             <button name="logout" class='btn btn-danger my-2'>Logout</button>
           </form>
