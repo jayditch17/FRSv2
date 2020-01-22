@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2020 at 10:57 PM
+-- Generation Time: Jan 22, 2020 at 05:11 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -82,8 +82,8 @@ INSERT INTO `dean_office` (`eventID`, `firstName`, `lastName`, `mobNum`, `org`, 
 CREATE TABLE `equipments` (
   `equipID` int(11) NOT NULL,
   `equipName` varchar(100) NOT NULL,
-  `equipStatus` varchar(100) NOT NULL,
-  `equipRemarks` varchar(200) NOT NULL
+  `equipDesciption` varchar(100) NOT NULL,
+  `working/not` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -111,6 +111,15 @@ CREATE TABLE `events` (
   `expire` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`eventID`, `firstName`, `lastName`, `mobNum`, `org`, `pos`, `adviser`, `eveName`, `evePlace`, `numPart`, `startDate`, `endDate`, `startTime`, `endTime`, `color`, `expire`) VALUES
+(1, 'jayditch', 'balansi', '09999999999', 'ICON', 'Vice President', 'Sir Del', 'SAMCIS Got Talent', 'Devesse Plaza', '100', '2020-01-21', '2020-01-24', '09:00:00', '17:00:00', '#000099', '2020-01-25'),
+(2, 'Destine', 'Aldana', '09999999999', 'SIKAP', 'Vice President', 'De Guzman', 'Mass', 'Devesse Plaza', '150', '2020-01-27', '2020-01-28', '10:00:00', '11:00:00', '#000099', '2020-01-25'),
+(3, 'lester', 'de guzman', '09999999999', 'ICON', 'Vice President', 'Sir Gab', 'Mass', 'Devesse Plaza', '33', '2020-01-22', '2020-01-22', '13:00:00', '14:00:00', '#787878', '2020-01-25');
+
 -- --------------------------------------------------------
 
 --
@@ -135,7 +144,8 @@ INSERT INTO `facilities` (`facilityID`, `facilityLevel`, `facilityRoom`, `roomTy
 (11, '5', '515', 'Lecture', 'ayus', '500'),
 (12, '5', '433', 'Laboratory', 'lecturelecturelecturelecturelecture', '50'),
 (13, '5th Floor', 'D513', 'Lecture', 'Lecture', '50'),
-(14, '5', 'd515', 'Lecture', 'Lecture Room', '50');
+(14, '5', 'd515', 'Lecture', 'Lecture Room', '50'),
+(15, '5', 'D513', 'Lecture', 'Lecture Class', '60');
 
 -- --------------------------------------------------------
 
@@ -239,9 +249,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`userID`, `firstName`, `lastName`, `orgs`, `pos`, `email`, `user_type`, `password`, `status`, `endofsem`) VALUES
 (10, 'super', 'admin', 'super', 'admin', 'superadmin@localhost.ph', 'Super Admin', 'slu', 'Active', ''),
 (12, 'guest', 'user', 'guest', 'user', 'guestuser@localhost.ph', 'Guest User', 'slu', 'Active', '2020-12-04'),
-(13, 'admin', 'user', 'dean', 'dean', 'dean@localhost.ph', 'Dean User', 'slu', 'Active', '2020-12-04'),
-(14, 'admin', 'user', 'sao', 'sao', 'sao@localhost.ph', 'Sao User', 'slu', 'Active', '2020-12-04'),
-(15, 'sample', 'sample', 'super', 'admin', 'superadmin123@localhost.ph', 'Super Admin', 'slu', 'Active', '2019-12-31'),
+(13, 'admin', 'user', 'dean', 'dean', 'dean@localhost.ph', 'Guest User', 'slu', 'Active', '2020-12-04'),
+(14, 'admin', 'user', 'sao', 'sao', 'sao@localhost.ph', 'Guest User', 'slu', 'Active', '2020-12-04'),
 (16, 'Abigail', 'Rubrico', 'ICON', 'President', '2165751@slu.edu.ph', 'Guest User', 'slu', 'Active', '2020-12-04');
 
 --
@@ -323,13 +332,13 @@ ALTER TABLE `equipments`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `facilities`
 --
 ALTER TABLE `facilities`
-  MODIFY `facilityID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `facilityID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `request_su`
