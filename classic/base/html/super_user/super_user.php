@@ -214,12 +214,12 @@
                         <span class="site-menu-title">Facilities</span>
                 </a>
               </li>
-              <li class="site-menu-item has-sub">
+              <!-- <li class="site-menu-item has-sub">
                 <a href="equipments.php">
                         <i class="site-menu-icon wb-hammer" aria-hidden="true"></i>
                         <span class="site-menu-title">Equipment</span>
                 </a>
-              </li>
+              </li> -->
               <li class="site-menu-item has-sub">
                 <a href="reservation.php">
                         <i class="site-menu-icon wb-book" aria-hidden="true"></i>
@@ -251,13 +251,71 @@
                 <h3 class="card-title text-center">Events</h3>
                                 
               </div>
-              <div class="card-body bg-secondary">
+              <div class="card-body ">
                 <?php
                 require_once "config.php";
                 $sql = "SELECT * FROM events where color='#000099'";
                 $query = mysqli_query($link, $sql);
                 
                 echo "<h1 class = 'text-center'>".mysqli_num_rows($query)."</h1>";
+                require_once "config.php";
+                    
+                    // Attempt select query execution
+                    //$sql = "SELECT * FROM events";
+                    if($result = mysqli_query($link, $sql)){
+                        if(mysqli_num_rows($result) > 0){
+                            echo "<table class='table table-bordered table-striped'>";
+                                echo "<thead>";
+                                    echo "<tr>";
+
+                                       echo "<th>Event ID</th>";
+                                       echo "<th>First Name</th>";
+                                       echo "<th>Last Name</th>";
+                                       echo "<th>Mobile Number</th>";
+                                       echo "<th>Organization</th>";
+                                       echo "<th>Adviser</th>";
+                                       echo "<th>Event Name</th>";
+                                       echo "<th>Event Place</th>";
+                                       echo "<th>Number of Participants</th>";
+                                       echo "<th>Start Date</th>";
+                                       echo "<th>End Date</th>";
+                                       echo "<th>Time Start</th>";
+                                       echo "<th>Time End</th>";
+                                        
+                                    echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+
+                                        echo "<td>" . $row['eventID'] . "</td>";
+                                        echo "<td>" . $row['firstName'] . "</td>";
+                                        echo "<td>" . $row['lastName'] . "</td>";
+                                        echo "<td>" . $row['mobNum'] . "</td>";
+                                        echo "<td>" . $row['org'] . "</td>";
+                                        echo "<td>" . $row['adviser'] . "</td>";
+                                        echo "<td>" . $row['eveName'] . "</td>";
+                                        echo "<td>" . $row['evePlace'] . "</td>";
+                                        echo "<td>" . $row['numPart'] . "</td>";
+                                        echo "<td>" . $row['startDate'] . "</td>";
+                                        echo "<td>" . $row['endDate'] . "</td>";
+                                        echo "<td>" . $row['startTime'] . "</td>";
+                                        echo "<td>" . $row['endTime'] . "</td>";
+                                        
+                                    echo "</tr>";
+                                }
+                                echo "</tbody>";                            
+                            echo "</table>";
+                            // Free result set
+                            mysqli_free_result($result);
+                        } else{
+                            echo "<p class='lead'><em>No Events were found.</em></p>";
+                        }
+                    } else{
+                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                    }
+ 
+                   
                 ?>
               </div>
             </div>
@@ -268,13 +326,66 @@
                 <h3 class="card-title text-center">Reservations</h3>
                                 
               </div>
-              <div class="card-body bg-secondary">
+              <div class="card-body">
                 <?php
                 require_once "config.php";
                 $sql = "SELECT * FROM events where color='#787878'";
                 $query = mysqli_query($link, $sql);
                 
                 echo "<h1 class = 'text-center'>".mysqli_num_rows($query)."</h1>";
+                  if($result = mysqli_query($link, $sql)){
+                        if(mysqli_num_rows($result) > 0){
+                            echo "<table class='table table-bordered table-striped'>";
+                                echo "<thead>";
+                                    echo "<tr>";
+
+                                       echo "<th>Event ID</th>";
+                                       echo "<th>First Name</th>";
+                                       echo "<th>Last Name</th>";
+                                       echo "<th>Mobile Number</th>";
+                                       echo "<th>Organization</th>";
+                                       echo "<th>Adviser</th>";
+                                       echo "<th>Event Name</th>";
+                                       echo "<th>Event Place</th>";
+                                       echo "<th>Number of Participants</th>";
+                                       echo "<th>Start Date</th>";
+                                       echo "<th>End Date</th>";
+                                       echo "<th>Time Start</th>";
+                                       echo "<th>Time End</th>";
+                                        
+                                    echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+
+                                        echo "<td>" . $row['eventID'] . "</td>";
+                                        echo "<td>" . $row['firstName'] . "</td>";
+                                        echo "<td>" . $row['lastName'] . "</td>";
+                                        echo "<td>" . $row['mobNum'] . "</td>";
+                                        echo "<td>" . $row['org'] . "</td>";
+                                        echo "<td>" . $row['adviser'] . "</td>";
+                                        echo "<td>" . $row['eveName'] . "</td>";
+                                        echo "<td>" . $row['evePlace'] . "</td>";
+                                        echo "<td>" . $row['numPart'] . "</td>";
+                                        echo "<td>" . $row['startDate'] . "</td>";
+                                        echo "<td>" . $row['endDate'] . "</td>";
+                                        echo "<td>" . $row['startTime'] . "</td>";
+                                        echo "<td>" . $row['endTime'] . "</td>";
+                                        
+                                    echo "</tr>";
+                                }
+                                echo "</tbody>";                            
+                            echo "</table>";
+                            // Free result set
+                            mysqli_free_result($result);
+                        } else{
+                            echo "<p class='lead'><em>No Events were found.</em></p>";
+                        }
+                    } else{
+                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                    }
+ 
                 ?>
               </div>
 

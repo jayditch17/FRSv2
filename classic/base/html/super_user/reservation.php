@@ -270,13 +270,13 @@
                         <span class="site-menu-title">Facilities</span>
                 </a>
               </li>
-              <li class="site-menu-item has-sub">
+              <!-- <li class="site-menu-item has-sub">
                 <a href="equipments.php">
                         <i class="site-menu-icon wb-hammer" aria-hidden="true"></i>
                         <span class="site-menu-title">Equipment</span>
                 </a>
               </li>
-              <li class="site-menu-item has-sub  active">
+ -->              <li class="site-menu-item has-sub  active">
                 <a href="reservation.html">
                         <i class="site-menu-icon wb-clipboard" aria-hidden="true"></i>
                         <span class="site-menu-title">Reservation</span>

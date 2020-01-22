@@ -1,7 +1,7 @@
 <?php
   include('DBConnector.php');
   //include_once("db_connect.php");
-$sql_query = "SELECT * FROM users";
+$sql_query = "SELECT * FROM events";
 $resultset = mysqli_query($conn, $sql_query) or die("database error:". mysqli_error($conn));
 $developer_records = array();
 while( $rows = mysqli_fetch_assoc($resultset) ) {

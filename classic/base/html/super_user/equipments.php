@@ -269,12 +269,12 @@
                         <span class="site-menu-title">Facilities</span>
                 </a>
               </li>
-              <li class="site-menu-item has-sub  active">
+              <!-- <li class="site-menu-item has-sub  active">
                 <a href="equipments.php">
                         <i class="site-menu-icon wb-hammer" aria-hidden="true"></i>
                         <span class="site-menu-title">Equipment</span>
                 </a>
-              </li>
+              </li> -->
               <li class="site-menu-item has-sub">
                 <a href="reservation.php">
                         <i class="site-menu-icon wb-book" aria-hidden="true"></i>
@@ -327,49 +327,36 @@
         </div>  
 
           <div class="page-header clearfix">
-              <a href="php_action/add_event.php" class="btn btn-success pull-right">Add Equipment</a>
+              <a href="php_action/add_equip.php" class="btn btn-success pull-right">Add Equipment</a>
           </div>
 
         
-          <?php
+          
+         <?php
           // Include config file
           require_once "config.php";
           
           // Attempt select query execution
-          $sql = "SELECT * FROM events";
+          $sql = "SELECT * FROM events JOIN equipments";
           if($result = mysqli_query($link, $sql)){
               if(mysqli_num_rows($result) > 0){
                   echo "<table class='table table-bordered table-striped'>";
                       echo "<thead>";
                           echo "<tr>";
-                              echo "<th>ID</th>";
-                              echo "<th>First Name</th>";
-                              echo "<th>Last Name</th>";
-                              echo "<th>Organization</th>";
-                              echo "<th>Event</th>";
-                              echo "<th>Venue</th>";
-                              echo "<th>Participants</th>";
-                              echo "<th>Date Start</th>";
-                              echo "<th>Date End</th>";
-                              echo "<th>Start Time</th>";
-                              echo "<th>End Time</th>";
-                              echo "<th>Action</th>";
+                              echo "Event Name";
+                              echo "Event Venue";
+                              echo "<th>Equipment Description</th>";
+                              echo "<th>Equipment ID</th>";
+
                           echo "</tr>";
                       echo "</thead>";
                       echo "<tbody>";
                       while($row = mysqli_fetch_array($result)){
                           echo "<tr>";
-                              echo "<td>" . $row['eventID'] . "</td>";
-                              echo "<td>" . $row['firstName'] . "</td>";
-                              echo "<td>" . $row['lastName'] . "</td>";
-                              echo "<td>" . $row['eventOrg'] . "</td>";
-                              echo "<td>" . $row['actEve'] . "</td>";
-                              echo "<td>" . $row['actVenue'] . "</td>";
-                              echo "<td>" . $row['numPart'] . "</td>";
-                              echo "<td>" . $row['startDate'] . "</td>";
-                              echo "<td>" . $row['endDate'] . "</td>";
-                              echo "<td>" . $row['startTime'] . "</td>";
-                              echo "<td>" . $row['endTime'] . "</td>";
+                              echo "<td>" . $row['eventName'] . "</td>";
+                              echo "<td>" . $row['eventPlace'] . "</td>";
+                              echo "<td>" . $row['equipDescription'] . "</td>";
+                              
                           
                               echo "<td>";
                                   echo "<a href='php_action/view_event.php?eventID=". $row['eventID'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
@@ -391,35 +378,11 @@
 
           // Close connection
           mysqli_close($link);
+          
           ?>
           
 
-          <div class="modal fade" id="basicModal2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Remove Student</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
 
-                  <div class="modal-body">
-                    <form action="deletestud.php" method="post">
-              <div class="alert alert-danger fade in">
-                  <input type="hidden" name="userID" value="<?php echo trim($_GET["userID"]); ?>"/>
-                  <p>Are you sure you want to delete this record?</p><br>
-                  <p>
-                      <input type="submit" value="Yes" class="btn btn-danger">
-                      <a href="student_account.php" class="btn btn-default">No</a>
-                  </p>
-              </div>
-          </form>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
           
 
           
